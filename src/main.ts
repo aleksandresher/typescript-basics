@@ -1,17 +1,24 @@
-let myName: string = "Aleksandre";
-let meaningOfLife: number;
-let isLoading: boolean;
-let album: any;
+let stringArr = ["one", "hey", "Dave"];
 
-meaningOfLife = 42;
-isLoading = true;
-album = 1984;
+let guitars = ["Strat", "Les Paul", 5150];
 
-const sum = (a: number, b: number) => {
-  return a + b;
-};
+let mixedData = ["EVH", 1984, true];
 
-let postId: string | number;
-let isActive: number | boolean;
+// stringArr[0] = 42; /// Type 'number' is not assignable to type 'string'
+stringArr[0] = "John";
 
-let re: RegExp = /\w+/g;
+guitars[0] = 1984;
+
+guitars = stringArr;
+
+let test = [];
+let bands: string[] = [];
+bands.push("Van Halen");
+
+// Tuple
+
+let myTuple: [string, number, boolean] = ["Dave", 42, true];
+myTuple[1] = 43;
+// myTuple[2] = 44; // Type 'number' is not assignable to type 'boolean'.
+
+////////////////// Objects

@@ -1,14 +1,16 @@
 "use strict";
-let myName = "Aleksandre";
-let meaningOfLife;
-let isLoading;
-let album;
-meaningOfLife = 42;
-isLoading = true;
-album = 1984;
-const sum = (a, b) => {
-    return a + b;
-};
-let postId;
-let isActive;
-let re = /\w+/g;
+let stringArr = ["one", "hey", "Dave"];
+let guitars = ["Strat", "Les Paul", 5150];
+let mixedData = ["EVH", 1984, true];
+// stringArr[0] = 42; /// Type 'number' is not assignable to type 'string'
+stringArr[0] = "John";
+guitars[0] = 1984;
+guitars = stringArr;
+let test = [];
+let bands = [];
+bands.push("Van Halen");
+// Tuple
+let myTuple = ["Dave", 42, true];
+myTuple[1] = 43;
+// myTuple[2] = 44; // Type 'number' is not assignable to type 'boolean'.
+////////////////// Objects
