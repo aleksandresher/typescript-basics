@@ -1,45 +1,67 @@
 "use strict";
-let stringArr = ["one", "hey", "Dave"];
-let guitars = ["Strat", "Les Paul", 5150];
-let mixedData = ["EVH", 1984, true];
-// stringArr[0] = 42; /// Type 'number' is not assignable to type 'string'
-stringArr[0] = "John";
-guitars[0] = 1984;
-guitars = stringArr;
-let test = [];
-let bands = [];
-bands.push("Van Halen");
-// Tuple
-let myTuple = ["Dave", 42, true];
-myTuple[1] = 43;
-// myTuple[2] = 44; // Type 'number' is not assignable to type 'boolean'.
-////////////////// Objects
-let myObj;
-myObj = [];
-console.log(typeof myObj); // object
-myObj = bands;
-myObj = {};
-const exampleObj = {
-    prop1: "Dave",
-    prop2: true,
+// let stringArr = ["one", "hey", "Dave"];
+// interface PostId = stringOrNumber; Won't work
+/// Literal types
+let myName;
+let userName;
+userName = "Aleksandre";
+// userName = "David"; // Type '"David"' is not assignable to type '"Aleksandre" | "John" | "Amy"'.
+///////////////////// Functions
+const add = (a, b) => {
+    return a + b;
 };
-// exampleObj.prop2 = 42; // Type 'number' is not assignable to type 'boolean'.
-exampleObj.prop1 = "John";
-let evh = {
-    name: "Eddie",
-    active: false,
-    albums: [1984, 5, "OU812"],
+const logMsg = (message) => {
+    console.log(message);
 };
-let jp = {
-    name: "Jimmy",
-    active: true,
-    albums: ["I", "II", "IV"],
+logMsg("Hello");
+logMsg(add(2, 3));
+let subtract = function (c, d) {
+    return c - d;
 };
-//   evh.years = 40; // Property 'years' does not exist on type 'Guitarist'.
-const greetGuitarist = (guitarist) => {
-    if (guitarist.name) {
-        return `Hello ${guitarist.name}`;
+let multiply = function (c, d) {
+    return c * d;
+};
+logMsg(multiply(2, 2));
+/// optional parameters
+const addAll = (a, b, c) => {
+    if (typeof c !== "undefined") {
+        return a + b + c;
     }
-    return "Hello!";
+    return a + b;
 };
-console.log(greetGuitarist(evh)); // Hello Eddie
+/// default param value
+const sumAll = (a = 10, b, c = 2) => {
+    return a + b + c;
+};
+logMsg(addAll(2, 3, 2));
+logMsg(addAll(2, 3));
+logMsg(sumAll(2, 3));
+logMsg(sumAll(undefined, 3));
+/// Rest Parameters
+const total = (a, ...nums) => {
+    return a + nums.reduce((prev, curr) => prev + curr);
+};
+logMsg(total(10, 2, 3));
+//// never type
+const createError = (errMsg) => {
+    throw new Error(errMsg);
+};
+const infinite = () => {
+    let i = 1;
+    while (true) {
+        i++;
+        if (i > 100)
+            break;
+    }
+};
+/// custom type guard
+const isNumber = (value) => {
+    return typeof value === "number" ? true : false;
+};
+const numberOrString = (value) => {
+    if (typeof value === "string")
+        return "string";
+    if (isNumber(value))
+        return "number";
+    return createError("This should never happer!");
+};
